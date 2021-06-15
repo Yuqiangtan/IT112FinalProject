@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import VehicleType, Inventory, Review
 import datetime
 from .forms import InventoryForm
+from django.urls import reverse_lazy, reverse
 
 # Create your tests here.
 class VehicleTypeTest(TestCase):
@@ -38,3 +39,13 @@ class NewInventoryForm(TestCase):
             }
         form=InventoryForm (data)
         self.assertTrue(form.is_valid)
+
+class New_Inventory_Authentication_Test(TestCase):
+    def setUp(self):
+        self.test_user=User.objects.create_user(username='testuser1',password='sql12345')
+        self.type=VehicleType.objects.create(typename='car')
+        self.inventory=Inventory.objects.create(inventoryname='PMC Editions', inventorytype=self.type, user=self.test_user,dateentered=datetime.date(2021,1,20),price=600.00, inventoryurl='https://www.acura.com/pmc-edition', description="PMC")
+
+    def test_redirect_if_not_logged_in(self):
+        response=self.client.get(reverse('newinventory'))
+        self.assertRedirects(response, '/accounts/login/?next=/suv/newinventory/')
