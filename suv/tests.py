@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import VehicleType, Inventory, Review
 import datetime
+from .forms import InventoryForm
 
 # Create your tests here.
 class VehicleTypeTest(TestCase):
@@ -22,3 +23,18 @@ class InventoryTest(TestCase):
 
     def test_typestring(self):
         self.assertEqual(str(self.inventory),'PMC Editions')
+
+class NewInventoryForm(TestCase):
+    #valid form data
+    def test_inventoryform(self):
+        data={
+                'inventoryname':'2021 Acura RDX PMC Editions', 
+                'inventorytype':'Suv',
+                'user':'yuqiang',
+                'dateentered':'2021-6-15',
+                'price':'60000.00',
+                'inventoryurl':'https://www.acura.com/rdx',
+                'description':'The RDX offers a 272-HP86 turbocharged 2.0-liter engine and available Super Handling All-Wheel Drive™ (SH-AWD®). The most sophisticated SH-AWD system yet, the torque-vectoring all-wheel drive system delivers more accurate handling for all road conditions'
+            }
+        form=InventoryForm (data)
+        self.assertTrue(form.is_valid)

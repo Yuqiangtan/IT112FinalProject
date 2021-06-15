@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Inventory, VehicleType, Review
 from django.urls import reverse_lazy
+from .forms import InventoryForm
 # Create your views here.
 def index(request):
     return render(request,'suv/index.html')
@@ -12,3 +13,16 @@ def inventory(request):
 def inventorydetail(request,id):
     inventory=get_object_or_404(Inventory,pk=id)
     return render(request,'suv/inventorydetail.html',{'inventory':inventory})
+
+def newInventory(request):
+    form=InventoryForm
+
+    if request.method=='POST':
+        form=InventoryForm(request.POST)
+        if form.is_valid():
+            post=form.save(commit=True)
+            post.save()
+            form=InventoryForm()
+    else:
+        form=InventoryForm()
+    return render(request,'suv/newinventory.html',{'form':form})
