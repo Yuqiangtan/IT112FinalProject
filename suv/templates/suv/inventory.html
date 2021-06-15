@@ -3,7 +3,7 @@
 <h2>Inventory</h2>
 <ul>
     {% for i in inventory_list %}
-    <li>{{ i.inventoryname }}</li>
+    <li><a href="{% url 'detail' id=i.id %}">{{ i.inventoryname }}</a> </li>
     {% endfor %}
 
 </ul>

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Inventory Detail</h2>
+<p>
+    Inventory Name:{{inventory.inventoryname}}<br/>
+    Inventory Type:{{inventory.inventorytype}}<br/>
+    Inventory Price:{{inventory.price}}<br/>
+    Inventory URL:{{inventory.inventoryurl}}<br/>
+    Inventory Description:{{inventory.description}}
+</p>
+{% endblock %}
