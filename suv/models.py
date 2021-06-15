@@ -26,7 +26,7 @@ class Inventory(models.Model):
 
     class Meta:
         db_table='inventory'
-
+        
 class Review(models.Model):
     title=models.CharField(max_length=255)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
