@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% block content %}
+<h1>Vehicle Type:</h1>
+<table class="vehicle_type-table">
+  <tr>
+    <td>Type Name</td>
+    <td>Type Description</td>
+  </tr>
+  {% for vehicle_type in VehicleType %}
+
+  <tr class="{% cycle 'bgcolor' '' %}">
+    <td>{{vehicle_type.typename}}</td>
+    <td>{{vehicle_type.typedescription}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

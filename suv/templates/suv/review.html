@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Reviews :</h1>
+<table class="review-table">
+  <tr>
+    <td>ID</td>
+    <td>Title</td>
+  </tr>
+  {% for review in Reviews %}
+  <tr class="{% cycle 'review-bgcolor' '' %}">
+    <td>{{review.id}}</td>
+    <td>
+      <a href="{% url 'reviewDetails' id=review.id %}">{{ review.title }}</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

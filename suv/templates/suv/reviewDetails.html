@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Reviews Details:</h1>
+<table class="review-table">
+  <tr>
+    <td>ID</td>
+    <td>{{details.id}}</td>
+  </tr>
+  <tr class="review-bgcolor">
+    <td>Title</td>
+    <td>{{details.title}}</td>
+  </tr>
+  <tr>
+    <td>Date</td>
+    <td>{{details.user}}</td>
+  </tr>
+  <tr class="review-bgcolor">
+    <td>Time</td>
+    <td>{{details.inventory}}</td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td>{{details.reviewdate}}</td>
+  </tr>
+  <tr class="review-bgcolor">
+    <td>Agenda</td>
+    <td>{{details.reviewtext}}</td>
+  </tr>
+</table>
+{% endblock %}
